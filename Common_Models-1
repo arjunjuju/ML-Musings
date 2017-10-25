@@ -1,0 +1,58 @@
+Commonly Used Models and Algorithms Part-1
+https://machinelearningmastery.com/linear-regression-for-machine-learning/Working with models
+In python we have functions for various models widely used in real life. The models are derived three sets of algorithms.
+Supervised Learning- It is the process of inferring the function from the data available i.e. training data and then predicting the output. Usually the training data is the form of combination like input, output where input can be a single number or a vector and output can be a class identifying the output. I am not going to dive deep into mathematics and this is going to just be an overview and perspective is with respect to python. The types of model which fall under this category are as follows
+	Decision tree
+	Linear Regression
+	Random forest
+	KNN
+Decision tree- we already used that algorithm in our previous material, so we will proceed with other algorithms
+Regression- Linear regression is the one which we are going to use. Linear regression assumes that there exists a linear relation between the input and output variables. For example if “a” is our input variable and “b” is our output variable, as per linear regression “b” can be obtained by linear combinations or calculations of “a”. If there is one independent variable	then the regression is called simple linear regression, if there are multiple independent variables then the regression is called multiple regression.
+Note- We use linear regression to predict a continuous range rather than classifying data into categories.
+We already know the equation for a straight line which is: b = ma + c, in our case the algorithm tries to learn the values of “m” and “c” for given input “a” to predict the most accurate value of corresponding “b”.
+Let us slightly look inside the mathematical inference and relationship with the algorithm:
+Consider the following data, where we have information about student names, hours of preparation and exam results.(This data doesn’t imply anything and it doesn’t make any inference am using it for explaining purpose. The values given are created by me and random in nature).
+
+Student Name	Preparation duration (Hours)	Marks Secured
+XXX	5	56
+YYY	7	70
+ZZZ	3	35
+NNN	12	95
+
+
+So the model predicts the Marks secured based on the hours of preparation which is calculated as
+Marks Secured = Weight*Preparation Hours + bias
+Here, the Weight points out to coefficients in machine learning terminology.
+Preparation Hours is an independent variable which is known as features in machine learning.
+Bias-Difference between predicted value and true value. This machine learning algorithm learns the correct values for Weight and Bias. Once the training is done, we will obtain best line of fit for the given training data.
+We indeed have a cost function which estimates the difference between predicted and true values which can be found out using the formula
+MSE=1/N∑_(i=0)^(N-1)▒〖(b_i-(〖ma〗_i-c))〗^2 
+Our goal is to minimise the MSE(Mean Square Error as low as possible). There are quite a few ways to do it.
+Python Implementation:
+sklearn.linear_model.LinearRegression()- function is used to implement linear regression.
+Random forests
+Random decision forests or random forests is an ensemble learning method for classification and regression. This algorithm works by generating a decision tree based on the training data. The algorithm predicts the type of the class of the(Classification) or predicts the mean(regression). Random forests overcome the overfitting problem of the decision trees.
+It is very easy to implement using python provides better accuracy compared to other models. The three main aspects of random forests are variable importance, tree bagging and relationship to nearest neighbours. We can learn more about these when we cover ensemble learning.
+Python implementation:
+class sklearn.ensemble.RandomForestClassifier()
+
+K Nearest Neighbour Classification- It is one of the simplest algorithms used in machine learning and easy to implement too. It can be used for both prediction(regression) and classification. 
+In K-nn classification- Majority is considered, based on the votes of the majority of the neighbours and based on the vote, the instance is classified.
+K-nn regression- In this method, the average value of the specified neighbours is taken into consideration and the value is assigned to the particular instance.
+The value of k can be 1,2 or 5 etc. It purely depends on the developer. Larger the value of k, the noise can be avoided. The efficiency of the model purely depends on the features present. If there are noisy features, the efficiency is affected.
+
+Usually the weights are assigned based on the distance between the instances. The neighbours which are nearer to the instance under consideration are given higher preference since they contribute more to the average.
+Python Implementation
+class sklearn.neighbors.KNeighborsClassifier()-function is used for implementation.
+
+Evaluating the efficiency of the models
+We evaluate a model’s performance by comparing the results obtained by the model and the actual results. This helps us to identify the performance of the model for the given data.
+For evaluating the accuracy of the models we can use:
+sklearn.metrics.accuracy_score()- Function to predict the accuracy score of the model which we use, it returns a float value which represents the accuracy score. We can use accuracy score for classification models.
+For evaluating the accuracy in case of regression based problems we can use mean absolute error which points out to the deviation between two continuous variables.
+sklearn.metrics.mean_absolute_error()- Function to perform absolute error calculation.
+The codes for implementing these algorithms will be present in the Models_and_Algorithms.py file.
+
+As per the data and results, it seems Random Forest model performs well compared to the others based on my observation for IOWA real estate data set.
+This document will be updated further.
+
